@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Django Social</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+
+	<header class="main-head">
+		<nav class="main">
+			<h1 id="logo">Hola</h1>
+			<ul>
+				{% if request.user.is_authenticated %}
+				<li><a href="#">Logout</a></li>
+				{% else %}
+				<li><a href="#">Register</a></li>
+				<li><a href="#">Login</a></li>
+				{% endif %}
+				
+				
+			</ul>
+		</nav>
+	</header>
+
+	<!-------------------------------------
+					Messages 
+	-------------------------------------->
+	{% if messages %}
+		{% for message in messages %}
+			<div class="notification {{message.tags}}">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
+
+	<!-------------------------------------
+					Navigation Bar 
+	-------------------------------------->
+	<div class="main">
+		
+		<nav class="second-nav">
+			<a class="feed" href="#">Inici</a>
+			<a class="profile" href="#">El meu perfil</a>
+			<a class="new" href="#">Crear una entrada</a>
+		</nav>
+
+
+		{% block content %}
+
+		{% endblock content %}
+
+
+
+	</div>
+
+	<footer>
+		<div class="row">
+			<p>Xarxa social desenvolupada amb Python i django seguint el tutorial de: <br> <a href="http://www.youtube.com/mundopython">Mundo Python</a></p>
+		</div>
+	</footer>
+
+</body>
+</html>
