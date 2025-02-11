@@ -1,7 +1,7 @@
 {% extends 'social/layout.html' %}
 
 {% block content %}
-<h1>Desconectat.</h1>
+<h1>Et vols desconectar?</h1>
 <form method="post" action="{% url 'logout' %}">
     {% csrf_token %}
     <button type="submit">logout</button>
